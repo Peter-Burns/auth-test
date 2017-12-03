@@ -8,7 +8,7 @@ var config = {
 };
 firebase.initializeApp(config);
 var provider = new firebase.auth.FacebookAuthProvider();
-var database = firebase.database();
+var database = firebase.database().ref();
 function login() {
     firebase.auth().signInWithRedirect(provider);
 }
@@ -20,9 +20,9 @@ firebase.auth().getRedirectResult().then(function (result) {
     }
     // The signed-in user info.
     var user = result.user;
-    console.log(user);
-    database.ref().set({
-        user:user
+    console.log(user.displayName);
+    database.set({
+        user:user.displayName;
     });
 }).catch(function (error) {
     // Handle Errors here.
