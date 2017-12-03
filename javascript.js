@@ -22,7 +22,7 @@ firebase.auth().getRedirectResult().then(function (result) {
     var user = result.user;
     console.log(user.displayName);
     database.set({
-        user:user.displayName;
+        user:user.displayName
     });
 }).catch(function (error) {
     // Handle Errors here.
